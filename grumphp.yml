@@ -20,8 +20,7 @@ grumphp:
             warning_severity: 0
             tab_width: 4
         yamllint: ~
-        plus_bom_fixer:
-            metadata:
-                priority: 100
+        rector:
+            level: 1
     extensions:
         - palPalani\GrumPhpRectorTask\ExtensionLoader
