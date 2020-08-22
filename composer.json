@@ -1,0 +1,25 @@
+{
+    "name": "palpalani/grumphp-rector-task",
+    "description": "Rector task runner",
+    "type": "library",
+    "license": "LGPL-3.0-or-later",
+    "authors": [
+        {
+            "name": "palPalani",
+            "email": "palani.p@gmail.com",
+            "homepage": "http://southdreamz.com"
+        }
+    ],
+    "support": {
+        "issues": "https://github.com/palpalani/grumphp-rector-task/issues"
+    },
+    "autoload":{
+        "psr-4":{
+            "palPalani\\GrumPhpRectorTask\\": "src/"
+        }
+    },
+    "require": {
+        "php": ">=7.2",
+        "phpro/grumphp": "^0.20"
+    }
+}
