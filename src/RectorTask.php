@@ -21,7 +21,7 @@ final class RectorTask extends AbstractExternalTask
         $resolver->setDefaults([
             'whitelist_patterns' => [],
             'clear-cache' => false,
-            'no-progress-bar' => true,
+            //'no-progress-bar' => true,
             'config' => null,
             'level' => null,
             'triggered_by' => ['php'],
@@ -30,7 +30,7 @@ final class RectorTask extends AbstractExternalTask
 
         $resolver->addAllowedTypes('whitelist_patterns', ['array']);
         $resolver->addAllowedTypes('clear-cache', ['bool']);
-        $resolver->addAllowedTypes('no-progress-bar', ['bool']);
+        //$resolver->addAllowedTypes('no-progress-bar', ['bool']);
         $resolver->addAllowedTypes('config', ['null', 'string']);
         $resolver->addAllowedTypes('level', ['null', 'string']);
         $resolver->addAllowedTypes('triggered_by', ['array']);
