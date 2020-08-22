@@ -1,6 +1,6 @@
 {
     "name": "palpalani/grumphp-rector-task",
-    "description": "Rector task runner",
+    "description": "RectorPhp task runner from GrumPHP",
     "type": "library",
     "license": "LGPL-3.0-or-later",
     "authors": [
@@ -20,6 +20,7 @@
     },
     "require": {
         "php": ">=7.2",
-        "phpro/grumphp": "^0.20"
+        "phpro/grumphp": "^0.20",
+        "rector/rector": "^0.7"
     }
 }
