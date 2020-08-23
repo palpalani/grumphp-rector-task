@@ -1,26 +1,21 @@
 # GrumPHP rector task
 
-[RectorPHP](https://github.com/rectorphp/rector) task runner for [GrumPHP](https://github.com/phpro/grumphp).
+This package extends [GrumPHP](https://github.com/phpro/grumphp) 
+with a task that runs [RectorPHP](https://github.com/rectorphp/rector).
 
-### grumphp.yml:
+### Installation
+
+The easiest way to install this package is through composer:
+
+``composer require --dev palpalani/grumphp-rector-task``
+
+Add the extension loader to your `grumphp.yml`.
 
 ````yml
-parameters:
-    tasks:
-        rector:
-            whitelist_patterns:  [],
-            clear-cache: false,
-            config: null,
-            level: null,
-            triggered_by:  [php],
-            ignore_patterns: []
+grumphp:
     extensions:
         - palPalani\GrumPhpRectorTask\ExtensionLoader
 ````
-
-### Install via Composer
-
-``composer require --dev palpalani/grumphp-rector-task``
 
 ### Sample RectorPhp configuration
 

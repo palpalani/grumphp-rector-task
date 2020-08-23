@@ -19,8 +19,8 @@ final class RectorTask extends AbstractExternalTask
             'whitelist_patterns' => [],
             'clear-cache' => false,
             //'no-progress-bar' => true,
-            'config' => null,
-            'level' => null,
+            'config' => 'rector.php',
+            //'level' => null,
             'triggered_by' => ['php'],
             'ignore_patterns' => [],
         ]);
@@ -29,7 +29,7 @@ final class RectorTask extends AbstractExternalTask
         $resolver->addAllowedTypes('clear-cache', ['bool']);
         //$resolver->addAllowedTypes('no-progress-bar', ['bool']);
         $resolver->addAllowedTypes('config', ['null', 'string']);
-        $resolver->addAllowedTypes('level', ['null', 'string']);
+        //$resolver->addAllowedTypes('level', ['null', 'string']);
         $resolver->addAllowedTypes('triggered_by', ['array']);
         $resolver->addAllowedTypes('ignore_patterns', ['array']);
 
@@ -51,20 +51,20 @@ final class RectorTask extends AbstractExternalTask
         }
 
         $arguments = $this->processBuilder->createArgumentsForCommand('rector');
-        //$arguments->add('check');
-        //$arguments->add('--dry-run');
+        $arguments->add('process');
+        $arguments->add('--dry-run');
 
         foreach ($config['whitelist_patterns'] as $whitelistPattern) {
             $arguments->add($whitelistPattern);
         }
 
         $arguments->addOptionalArgument('--config=%s', $config['config']);
-        $arguments->addOptionalArgument('--level=%s', $config['level']);
+        //$arguments->addOptionalArgument('--level=%s', $config['level']);
         $arguments->addOptionalArgument('--clear-cache', $config['clear-cache']);
         //$arguments->addOptionalArgument('--no-progress-bar', $config['no-progress-bar']);
         $arguments->addOptionalArgument('--ansi', true);
         //$arguments->addOptionalArgument('--no-interaction', true);
-
+var_dump($arguments);
         $process = $this->processBuilder->buildProcess($arguments);
         $process->run();
 
