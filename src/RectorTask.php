@@ -18,18 +18,14 @@ final class RectorTask extends AbstractExternalTask
         $resolver->setDefaults([
             'whitelist_patterns' => [],
             'clear-cache' => false,
-            //'no-progress-bar' => true,
             'config' => 'rector.php',
-            //'level' => null,
             'triggered_by' => ['php'],
             'ignore_patterns' => [],
         ]);
 
         $resolver->addAllowedTypes('whitelist_patterns', ['array']);
         $resolver->addAllowedTypes('clear-cache', ['bool']);
-        //$resolver->addAllowedTypes('no-progress-bar', ['bool']);
         $resolver->addAllowedTypes('config', ['null', 'string']);
-        //$resolver->addAllowedTypes('level', ['null', 'string']);
         $resolver->addAllowedTypes('triggered_by', ['array']);
         $resolver->addAllowedTypes('ignore_patterns', ['array']);
 
@@ -59,12 +55,9 @@ final class RectorTask extends AbstractExternalTask
         }
 
         $arguments->addOptionalArgument('--config=%s', $config['config']);
-        //$arguments->addOptionalArgument('--level=%s', $config['level']);
         $arguments->addOptionalArgument('--clear-cache', $config['clear-cache']);
-        //$arguments->addOptionalArgument('--no-progress-bar', $config['no-progress-bar']);
         $arguments->addOptionalArgument('--ansi', true);
-        //$arguments->addOptionalArgument('--no-interaction', true);
-var_dump($arguments);
+
         $process = $this->processBuilder->buildProcess($arguments);
         $process->run();
 
