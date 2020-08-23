@@ -1,6 +1,6 @@
-# grumphp-rector-task
+# GrumPHP rector task
 
-RectorPHP task runner form GrumPHP
+[RectorPHP](https://github.com/rectorphp/rector) task runner for [GrumPHP](https://github.com/phpro/grumphp).
 
 ### grumphp.yml:
 
@@ -18,13 +18,13 @@ parameters:
         - palPalani\GrumPhpRectorTask\ExtensionLoader
 ````
 
-
-### Composer
+### Install via Composer
 
 ``composer require --dev palpalani/grumphp-rector-task``
 
+### Sample RectorPhp configuration
 
-### Rector config
+Create `rector.php` in your project root and configure as follows.
 
 ```php
 <?php
@@ -62,3 +62,5 @@ return static function (ContainerConfigurator $containerConfigurator): void {
     $parameters->set(Option::PATHS, [__DIR__.'/app', __DIR__.'/tests']);
 };
 ```
+
+Please [RectorPhp](https://github.com/rectorphp/rector#features) for more configuration examples.

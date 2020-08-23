@@ -11,15 +11,12 @@ grumphp:
             triggered_by: [php]
         git_commit_message:
             max_subject_width: 120
-            max_body_width: 120
+            max_body_width: 160
             enforce_capitalized_subject: false
-        jsonlint:
-            detect_key_conflicts: true
         phpcs:
             standard: "PSR12"
             warning_severity: 0
             tab_width: 4
-        yamllint: ~
         rector:
             level: 1
     extensions:
