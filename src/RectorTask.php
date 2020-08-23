@@ -58,6 +58,8 @@ final class RectorTask extends AbstractExternalTask
         $arguments->addOptionalArgument('--clear-cache', $config['clear-cache']);
         $arguments->addOptionalArgument('--ansi', true);
 
+        //$arguments->add('--no-progress-bar');
+
         $process = $this->processBuilder->buildProcess($arguments);
         $process->run();
 
