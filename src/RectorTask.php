@@ -21,6 +21,7 @@ final class RectorTask extends AbstractExternalTask
             'config' => 'rector.php',
             'triggered_by' => ['php'],
             'ignore_patterns' => [],
+            'no-progress-bar' => false,
         ]);
 
         $resolver->addAllowedTypes('whitelist_patterns', ['array']);
@@ -28,6 +29,7 @@ final class RectorTask extends AbstractExternalTask
         $resolver->addAllowedTypes('config', ['null', 'string']);
         $resolver->addAllowedTypes('triggered_by', ['array']);
         $resolver->addAllowedTypes('ignore_patterns', ['array']);
+        $resolver->addAllowedTypes('no-progress-bar', ['bool']);
 
         return $resolver;
     }
@@ -56,6 +58,7 @@ final class RectorTask extends AbstractExternalTask
 
         $arguments->addOptionalArgument('--config=%s', $config['config']);
         $arguments->addOptionalArgument('--clear-cache', $config['clear-cache']);
+        $arguments->addOptionalArgument('--no-progress-bar', $config['clear-cache']);
         $arguments->addOptionalArgument('--ansi', true);
 
         //$arguments->add('--no-progress-bar');

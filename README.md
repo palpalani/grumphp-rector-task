@@ -9,16 +9,56 @@ The easiest way to install this package is through composer:
 
 ``composer require --dev palpalani/grumphp-rector-task``
 
-Add the extension loader to your `grumphp.yml`.
+### Config
+
+Add the extension loader to your `grumphp.yml` or `grumphp.yml.dist`.
+The task lives under the `rector` namespace and has following 
+configurable parameters:
 
 ````yml
+# grumphp.yml
 grumphp:
     tesks:
         rector:
+            whitelist_patterns: []
+            config: 'rector.php'
             triggered_by: ['php']
+            clear-cache: false            
+            ignore_patterns: []
+            no-progress-bar: false
     extensions:
         - palPalani\GrumPhpRectorTask\ExtensionLoader
 ````
+
+#### whitelist_patterns
+
+`Default: []`
+
+If you want to run on particular directories only, specify it with this option.
+
+#### config
+
+`Default: 'rector.php'`
+
+If you want to use a different config file than the default `rector.php`, you can specify your custom config file location with this option.
+
+#### triggered_by
+
+`Default: [php]`
+
+This option will specify which file extensions will trigger this task.
+
+#### clear-cache
+
+`Default: false`
+
+Clear cache for already checked files.
+
+#### no-progress-bar
+
+`Default: false`
+
+Hide progress bar. Useful e.g. for nicer CI output.
 
 ### Sample RectorPhp configuration
 
