@@ -13,6 +13,9 @@ Add the extension loader to your `grumphp.yml`.
 
 ````yml
 grumphp:
+    tesks:
+        rector:
+            triggered_by: ['php']
     extensions:
         - palPalani\GrumPhpRectorTask\ExtensionLoader
 ````
@@ -20,6 +23,8 @@ grumphp:
 ### Sample RectorPhp configuration
 
 Create `rector.php` in your project root and configure as follows.
+Also you no need to set all these settings, Please add or remove as per your
+requirements.
 
 ```php
 <?php
@@ -28,6 +33,7 @@ declare(strict_types=1);
 
 use Rector\Core\Configuration\Option;
 use Rector\Set\ValueObject\SetList;
+use Rector\CodeQuality\Rector\If_\SimplifyIfReturnBoolRector;
 use Symfony\Component\DependencyInjection\Loader\Configurator\ContainerConfigurator;
 use Rector\Php74\Rector\Property\TypedPropertyRector;
 
@@ -53,9 +59,25 @@ return static function (ContainerConfigurator $containerConfigurator): void {
         SetList::PHPUNIT_CODE_QUALITY,
         SetList::SOLID,
     ]);
+    
+    // is there single rule you don't like from a set you use?
+    $parameters->set(Option::EXCLUDE_RECTORS, [
+        SimplifyIfReturnBoolRector::class,
+    ]);
 
+    // paths to refactor;
     $parameters->set(Option::PATHS, [__DIR__.'/app', __DIR__.'/tests']);
+    
+    // is there a file you need to skip?
+    $parameters->set(Option::EXCLUDE_PATHS, [
+        // single file
+        __DIR__ . '/src/ComplicatedFile.php',
+        // or directory
+        __DIR__ . '/src/ComplicatedFile.php',
+        // or fnmatch
+        __DIR__ . '/src/*/Tests/*',
+    ]);
 };
 ```
 
-Please [RectorPhp](https://github.com/rectorphp/rector#features) for more configuration examples.
+Please visit [RectorPhp](https://github.com/rectorphp/rector#features) for more configuration examples.
