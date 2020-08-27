@@ -3,7 +3,7 @@
 This package extends [GrumPHP](https://github.com/phpro/grumphp) 
 with a task that runs [RectorPHP](https://github.com/rectorphp/rector).
 
-### Installation
+## Installation
 
 The easiest way to install this package is through composer:
 
@@ -121,3 +121,12 @@ return static function (ContainerConfigurator $containerConfigurator): void {
 ```
 
 Please visit [RectorPhp](https://github.com/rectorphp/rector#features) for more configuration examples.
+
+## Contributing
+
+Please see [CONTRIBUTING](CONTRIBUTING.md) for details.
+
+## Todo
+- Run only changed files
+- Add memory restriction
+- Add more tests
