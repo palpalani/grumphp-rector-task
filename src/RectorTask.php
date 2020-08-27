@@ -3,11 +3,11 @@
 namespace palPalani\GrumPhpRectorTask;
 
 use GrumPHP\Runner\TaskResult;
+use GrumPHP\Task\Context\RunContext;
+use GrumPHP\Task\AbstractExternalTask;
 use GrumPHP\Runner\TaskResultInterface;
 use GrumPHP\Task\Context\ContextInterface;
 use GrumPHP\Task\Context\GitPreCommitContext;
-use GrumPHP\Task\Context\RunContext;
-use GrumPHP\Task\AbstractExternalTask;
 use Symfony\Component\OptionsResolver\OptionsResolver;
 
 final class RectorTask extends AbstractExternalTask
@@ -66,7 +66,7 @@ final class RectorTask extends AbstractExternalTask
         $process = $this->processBuilder->buildProcess($arguments);
         $process->run();
 
-        if (!$process->isSuccessful()) {
+        if (! $process->isSuccessful()) {
             return TaskResult::createFailed($this, $context, $this->formatter->format($process));
         }
 
