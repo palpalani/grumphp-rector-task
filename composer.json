@@ -13,14 +13,22 @@
     "support": {
         "issues": "https://github.com/palpalani/grumphp-rector-task/issues"
     },
-    "autoload":{
-        "psr-4":{
+    "autoload": {
+        "psr-4": {
             "palPalani\\GrumPhpRectorTask\\": "src/"
+        }
+    },
+    "autoload-dev": {
+        "psr-4": {
+            "palPalani\\GrumPhpRectorTask\\Tests\\": "tests/"
         }
     },
     "require": {
         "php": ">=7.2",
         "phpro/grumphp": "^0.20",
         "rector/rector": "^0.7"
+    },
+    "require-dev": {
+        "phpunit/phpunit": "^8.4|9.0"
     }
 }
