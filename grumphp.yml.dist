@@ -27,6 +27,6 @@ grumphp:
             diff: false
             triggered_by: ['php']
         rector:
-            level: 1
+            no-progress-bar: false
     extensions:
         - palPalani\GrumPhpRectorTask\ExtensionLoader
