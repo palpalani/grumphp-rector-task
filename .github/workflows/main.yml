@@ -8,10 +8,11 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-      - uses: actions/checkout@v1
+      - uses: actions/checkout@v2
 
-      - name: Cache composer
-        uses: actions/cache@v1
+      - name: Cache composer packages
+        id: composer-cache
+        uses: actions/cache@v2
         with:
           path: vendor
           key: ${{ runner.OS }}-build-${{ hashFiles('**/composer.json') }}
@@ -24,6 +25,7 @@ jobs:
         run: composer validate
 
       - name: Install dependencies
+        if: steps.composer-cache.outputs.cache-hit != 'true'
         run: composer install --prefer-dist --no-progress --no-suggest
 
       - name: Run test suite
