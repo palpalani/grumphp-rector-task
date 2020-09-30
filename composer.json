@@ -25,7 +25,7 @@
     },
     "require": {
         "php": ">=7.2",
-        "phpro/grumphp": "^0.22",
+        "phpro/grumphp": "^1.0",
         "rector/rector": "^0.8"
     },
     "require-dev": {
