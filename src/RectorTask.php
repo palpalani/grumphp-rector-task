@@ -2,14 +2,14 @@
 
 namespace palPalani\GrumPhpRectorTask;
 
-use GrumPHP\Collection\FilesCollection;
-use GrumPHP\Collection\ProcessArgumentsCollection;
 use GrumPHP\Runner\TaskResult;
 use GrumPHP\Task\Context\RunContext;
 use GrumPHP\Task\AbstractExternalTask;
+use GrumPHP\Collection\FilesCollection;
 use GrumPHP\Runner\TaskResultInterface;
 use GrumPHP\Task\Context\ContextInterface;
 use GrumPHP\Task\Context\GitPreCommitContext;
+use GrumPHP\Collection\ProcessArgumentsCollection;
 use Symfony\Component\OptionsResolver\OptionsResolver;
 
 final class RectorTask extends AbstractExternalTask
@@ -89,6 +89,7 @@ final class RectorTask extends AbstractExternalTask
     ): void {
         if ($context instanceof GitPreCommitContext && $config['files_on_pre_commit']) {
             $arguments->addFiles($files);
+
             return;
         }
 
