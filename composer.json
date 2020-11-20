@@ -1,13 +1,28 @@
 {
     "name": "palpalani/grumphp-rector-task",
     "description": "RectorPhp task runner from GrumPHP",
-    "type": "library",
+    "keywords": [
+        "laravel",
+        "laravel-framework",
+        "grumphp",
+        "grumphp-task",
+        "rectorphp",
+        "php-library",
+        "grumphp-rector-task",
+        "refactoring",
+        "automated-upgrades",
+        "instant-upgrades",
+        "upgrade"
+    ],
+    "homepage": "https://github.com/palpalani/grumphp-rector-task",
     "license": "MIT",
+    "type": "library",
     "authors": [
         {
             "name": "palPalani",
             "email": "palani.p@gmail.com",
-            "homepage": "http://southdreamz.com"
+            "homepage": "https://github.com/palpalani",
+            "role": "Developer"
         }
     ],
     "support": {
@@ -25,11 +40,18 @@
     },
     "require": {
         "php": ">=7.2",
-        "phpro/grumphp": "^1.0",
+        "phpro/grumphp": "^1.1",
         "rector/rector": "^0.8"
     },
     "require-dev": {
+        "friendsofphp/php-cs-fixer": "^2.16",
+        "orchestra/testbench": "^6.0",
         "phpunit/phpunit": "^8.4|^9.3",
-        "friendsofphp/php-cs-fixer": "^2.16"
+        "vimeo/psalm": "^3.18"
+    },
+    "scripts": {
+        "psalm": "vendor/bin/psalm",
+        "test": "vendor/bin/phpunit --colors=always",
+        "test-coverage": "vendor/bin/phpunit --coverage-html coverage"
     }
 }
