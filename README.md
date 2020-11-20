@@ -18,7 +18,7 @@ configurable parameters:
 ````yml
 # grumphp.yml
 grumphp:
-    tesks:
+    tasks:
         rector:
             whitelist_patterns: []
             config: 'rector.php'
@@ -26,6 +26,7 @@ grumphp:
             clear-cache: false            
             ignore_patterns: []
             no-progress-bar: false
+            files_on_pre_commit: false
     extensions:
         - palPalani\GrumPhpRectorTask\ExtensionLoader
 ````
@@ -59,6 +60,12 @@ Clear cache for already checked files.
 `Default: false`
 
 Hide progress bar. Useful e.g. for nicer CI output.
+
+#### files_on_pre_commit
+
+`Default: false`
+
+This option makes it possible to use the changed files as paths during pre-commits. It will use the paths option to make sure only committed files that match the path are validated.
 
 ### Sample RectorPhp configuration
 
