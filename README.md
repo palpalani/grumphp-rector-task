@@ -1,7 +1,8 @@
 # GrumPHP rector task
 
 This package extends [GrumPHP](https://github.com/phpro/grumphp) 
-with a task that runs [RectorPHP](https://github.com/rectorphp/rector).
+with a task that runs [RectorPHP](https://github.com/rectorphp/rector) for
+your Laravel projects or any PHP application.
 
 ## Installation
 
@@ -30,6 +31,8 @@ grumphp:
     extensions:
         - palPalani\GrumPhpRectorTask\ExtensionLoader
 ````
+
+By default, this won't update your code, you need to do it manually.
 
 #### whitelist_patterns
 
@@ -153,3 +156,4 @@ The MIT License (MIT). Please see [License File](LICENSE.md) for more informatio
 - Run only changed files
 - Add memory restriction
 - Add more tests
+- xdebug

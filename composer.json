@@ -12,7 +12,8 @@
         "refactoring",
         "automated-upgrades",
         "instant-upgrades",
-        "upgrade"
+        "upgrade",
+        "laravel shift"
     ],
     "homepage": "https://github.com/palpalani/grumphp-rector-task",
     "license": "MIT",
