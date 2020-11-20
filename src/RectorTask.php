@@ -2,6 +2,8 @@
 
 namespace palPalani\GrumPhpRectorTask;
 
+use GrumPHP\Collection\FilesCollection;
+use GrumPHP\Collection\ProcessArgumentsCollection;
 use GrumPHP\Runner\TaskResult;
 use GrumPHP\Task\Context\RunContext;
 use GrumPHP\Task\AbstractExternalTask;
@@ -22,6 +24,7 @@ final class RectorTask extends AbstractExternalTask
             'triggered_by' => ['php'],
             'ignore_patterns' => [],
             'no-progress-bar' => false,
+            'files_on_pre_commit' => false,
         ]);
 
         $resolver->addAllowedTypes('whitelist_patterns', ['array']);
@@ -30,6 +33,7 @@ final class RectorTask extends AbstractExternalTask
         $resolver->addAllowedTypes('triggered_by', ['array']);
         $resolver->addAllowedTypes('ignore_patterns', ['array']);
         $resolver->addAllowedTypes('no-progress-bar', ['bool']);
+        $resolver->addAllowedTypes('files_on_pre_commit', ['bool']);
 
         return $resolver;
     }
@@ -60,8 +64,7 @@ final class RectorTask extends AbstractExternalTask
         $arguments->addOptionalArgument('--clear-cache', $config['clear-cache']);
         $arguments->addOptionalArgument('--no-progress-bar', $config['clear-cache']);
         $arguments->addOptionalArgument('--ansi', true);
-
-        //$arguments->add('--no-progress-bar');
+        $this->addPaths($arguments, $context, $files, $config);
 
         $process = $this->processBuilder->buildProcess($arguments);
         $process->run();
@@ -71,5 +74,24 @@ final class RectorTask extends AbstractExternalTask
         }
 
         return TaskResult::createPassed($this, $context);
+    }
+
+    /**
+     * This method adds the newly committed files in pre commit context if you enabled the files_on_pre_commit flag.
+     * In other cases, it falls back to the configured paths.
+     * If no paths have been set, the paths from inside your rector configuration file will be used.
+     */
+    private function addPaths(
+        ProcessArgumentsCollection $arguments,
+        ContextInterface $context,
+        FilesCollection $files,
+        array $config
+    ): void {
+        if ($context instanceof GitPreCommitContext && $config['files_on_pre_commit']) {
+            $arguments->addFiles($files);
+            return;
+        }
+
+        $arguments->addArgumentArray('%s', $config['paths']);
     }
 }
