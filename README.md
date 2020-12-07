@@ -72,9 +72,7 @@ This option makes it possible to use the changed files as paths during pre-commi
 
 ### Sample RectorPhp configuration
 
-Create `rector.php` in your project root and configure as follows.
-Also you no need to set all these settings, Please add or remove as per your
-requirements.
+Create `rector.php` in your project root and configure as follows. This example file iam using for my [Laravel](https://laravel.com/) project, but you can use library with any [PHP](https://www.php.net/) project. Also you no need to set all these settings, Please add or remove as per your requirements.
 
 ```php
 <?php
@@ -97,14 +95,15 @@ return static function (ContainerConfigurator $containerConfigurator): void {
         SetList::ACTION_INJECTION_TO_CONSTRUCTOR_INJECTION,
         SetList::ARRAY_STR_FUNCTIONS_TO_STATIC_CALL,
         SetList::CODE_QUALITY,
-        SetList::PHP_53,
-        SetList::PHP_54,
-        SetList::PHP_56,
-        SetList::PHP_70,
-        SetList::PHP_71,
+        //SetList::PHP_53,
+        //SetList::PHP_54,
+        //SetList::PHP_56,
+        //SetList::PHP_70,
+        //SetList::PHP_71,
         SetList::PHP_72,
         SetList::PHP_73,
         SetList::PHP_74,
+        //SetList::PHP_80,
         SetList::PHPSTAN,
         SetList::PHPUNIT_CODE_QUALITY,
         SetList::SOLID,
@@ -127,6 +126,15 @@ return static function (ContainerConfigurator $containerConfigurator): void {
         // or fnmatch
         __DIR__ . '/src/*/Tests/*',
     ]);
+    
+    // auto import fully qualified class names? [default: false]
+    //$parameters->set(Option::AUTO_IMPORT_NAMES, true);
+
+    // skip root namespace classes, like \DateTime or \Exception [default: true]
+    //$parameters->set(Option::IMPORT_SHORT_CLASSES, false);
+    
+    // Run Rector only on changed files
+    //$parameters->set(Option::ENABLE_CACHE, true);
 };
 ```
 
@@ -153,7 +161,6 @@ Please review [our security policy](../../security/policy) on how to report secu
 The MIT License (MIT). Please see [License File](LICENSE.md) for more information.
 
 ## Todo
-- Run only changed files
 - Add memory restriction
 - Add more tests
 - xdebug
