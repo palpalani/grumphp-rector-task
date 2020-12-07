@@ -140,6 +140,14 @@ return static function (ContainerConfigurator $containerConfigurator): void {
 
 Please visit [RectorPhp](https://github.com/rectorphp/rector#features) for more configuration examples.
 
+## Uninstall
+
+If you want to uninstall this library remove configuration files first: `rector.php` from your application.
+
+then remove package:
+
+    ``composer remove sci3ma/symfony-grumphp``
+
 ## Changelog
 
 Please see [CHANGELOG](CHANGELOG.md) for more information on what has changed recently.
