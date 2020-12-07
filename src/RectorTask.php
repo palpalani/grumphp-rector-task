@@ -25,6 +25,7 @@ final class RectorTask extends AbstractExternalTask
             'ignore_patterns' => [],
             'no-progress-bar' => false,
             'files_on_pre_commit' => false,
+            'paths' => [],
         ]);
 
         $resolver->addAllowedTypes('whitelist_patterns', ['array']);
@@ -34,6 +35,7 @@ final class RectorTask extends AbstractExternalTask
         $resolver->addAllowedTypes('ignore_patterns', ['array']);
         $resolver->addAllowedTypes('no-progress-bar', ['bool']);
         $resolver->addAllowedTypes('files_on_pre_commit', ['bool']);
+        $resolver->addAllowedTypes('paths', ['array']);
 
         return $resolver;
     }
