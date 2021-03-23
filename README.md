@@ -93,7 +93,7 @@ return static function (ContainerConfigurator $containerConfigurator): void {
 
     $parameters->set(Option::SETS, [
         SetList::ACTION_INJECTION_TO_CONSTRUCTOR_INJECTION,
-        SetList::ARRAY_STR_FUNCTIONS_TO_STATIC_CALL,
+        //SetList::ARRAY_STR_FUNCTIONS_TO_STATIC_CALL,
         SetList::CODE_QUALITY,
         //SetList::PHP_53,
         //SetList::PHP_54,
@@ -105,7 +105,7 @@ return static function (ContainerConfigurator $containerConfigurator): void {
         SetList::PHP_74,
         //SetList::PHP_80,
         SetList::PHPSTAN,
-        SetList::PHPUNIT_CODE_QUALITY,
+        //SetList::PHPUNIT_CODE_QUALITY,
         SetList::SOLID,
     ]);
     
@@ -148,7 +148,7 @@ If you want to uninstall this library remove configuration files first: `rector.
 
 then remove package:
 
-    ``composer remove sci3ma/symfony-grumphp``
+    ``composer remove palpalani/grumphp-rector-task``
 
 ## Changelog
 
@@ -161,6 +161,10 @@ Please see [CONTRIBUTING](.github/CONTRIBUTING.md) for details.
 ## Security Vulnerabilities
 
 Please review [our security policy](../../security/policy) on how to report security vulnerabilities.
+
+## Versioning
+
+We use [SemVer](http://semver.org/) for versioning. For the versions available, see the [tags on this repository](https://github.com/palpalani/grumphp-rector-task/tags).
 
 ## Credits
 
