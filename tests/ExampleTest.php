@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 namespace palPalani\GrumPhpRectorTask\Tests;
 
 use PHPUnit\Framework\TestCase;
