@@ -100,7 +100,7 @@ return static function (ContainerConfigurator $containerConfigurator): void {
         //SetList::PHP_56,
         //SetList::PHP_70,
         //SetList::PHP_71,
-        SetList::PHP_72,
+        //SetList::PHP_72,
         SetList::PHP_73,
         SetList::PHP_74,
         //SetList::PHP_80,
@@ -109,10 +109,12 @@ return static function (ContainerConfigurator $containerConfigurator): void {
         SetList::SOLID,
     ]);
     
+    /*
     // is there single rule you don't like from a set you use?
     $parameters->set(Option::EXCLUDE_RECTORS, [
         SimplifyIfReturnBoolRector::class,
     ]);
+    */
 
     // paths to refactor;
     $parameters->set(Option::PATHS, [__DIR__.'/app', __DIR__.'/tests']);
