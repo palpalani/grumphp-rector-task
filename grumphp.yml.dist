@@ -18,9 +18,9 @@ grumphp:
             warning_severity: 0
             tab_width: 4
         phpcsfixer:
-            allow_risky: false
+            allow_risky: true
             cache_file: ~
-            config: .php_cs.dist
+            config: .php-cs-fixer.dist.php
             using_cache: ~
             config_contains_finder: true
             verbose: true

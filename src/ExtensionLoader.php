@@ -5,8 +5,8 @@ declare(strict_types=1);
 namespace palPalani\GrumPhpRectorTask;
 
 use GrumPHP\Extension\ExtensionInterface;
-use Symfony\Component\DependencyInjection\Reference;
 use Symfony\Component\DependencyInjection\ContainerBuilder;
+use Symfony\Component\DependencyInjection\Reference;
 
 class ExtensionLoader implements ExtensionInterface
 {

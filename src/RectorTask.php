@@ -4,14 +4,14 @@ declare(strict_types=1);
 
 namespace palPalani\GrumPhpRectorTask;
 
-use GrumPHP\Runner\TaskResult;
-use GrumPHP\Task\Context\RunContext;
-use GrumPHP\Task\AbstractExternalTask;
 use GrumPHP\Collection\FilesCollection;
+use GrumPHP\Collection\ProcessArgumentsCollection;
+use GrumPHP\Runner\TaskResult;
 use GrumPHP\Runner\TaskResultInterface;
+use GrumPHP\Task\AbstractExternalTask;
 use GrumPHP\Task\Context\ContextInterface;
 use GrumPHP\Task\Context\GitPreCommitContext;
-use GrumPHP\Collection\ProcessArgumentsCollection;
+use GrumPHP\Task\Context\RunContext;
 use Symfony\Component\OptionsResolver\OptionsResolver;
 
 final class RectorTask extends AbstractExternalTask
