@@ -90,7 +90,13 @@ return static function (ContainerConfigurator $containerConfigurator): void {
 
     $services = $containerConfigurator->services();
     $services->set(TypedPropertyRector::class);
+    
+    $containerConfigurator->import(SetList::CODE_QUALITY);
+    $containerConfigurator->import(SetList::PHP_73);
+    $containerConfigurator->import(SetList::PHP_74);
+    $containerConfigurator->import(SetList::PHP_80);
 
+    /*
     $parameters->set(Option::SETS, [
         SetList::ACTION_INJECTION_TO_CONSTRUCTOR_INJECTION,
         //SetList::ARRAY_STR_FUNCTIONS_TO_STATIC_CALL,
@@ -108,6 +114,7 @@ return static function (ContainerConfigurator $containerConfigurator): void {
         //SetList::PHPUNIT_CODE_QUALITY,
         SetList::SOLID,
     ]);
+    */
     
     /*
     // is there single rule you don't like from a set you use?
