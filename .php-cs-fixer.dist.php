@@ -6,7 +6,7 @@ $finder = PhpCsFixer\Finder::create()
 
 $config = new PhpCsFixer\Config();
 $config->setRules([
-        '@PSR2' => true,
+        '@PSR12' => true,
         'align_multiline_comment' => [
             'comment_type' => 'phpdocs_like',
         ],
