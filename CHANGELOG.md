@@ -1,8 +1,12 @@
 # Changelog
 
-All notable changes to `laravel-login-notification` will be documented in this file
+All notable changes to `laravel-login-notification` will be documented in this file.
 
-## 0.86.2 - 2020-05-24
+## 0.8.3 - 2021-11-16
+
+Updated rectorphp version.
+
+## 0.8.2 - 2021-05-24
 
 Updated sample configuration.
 
