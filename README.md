@@ -82,68 +82,50 @@ declare(strict_types=1);
 use Rector\Core\Configuration\Option;
 use Rector\Set\ValueObject\SetList;
 use Rector\CodeQuality\Rector\If_\SimplifyIfReturnBoolRector;
-use Symfony\Component\DependencyInjection\Loader\Configurator\ContainerConfigurator;
+use Rector\Config\RectorConfig;
 use Rector\Php74\Rector\Property\TypedPropertyRector;
+use Rector\CodeQuality\Rector\Isset_\IssetOnPropertyObjectToPropertyExistsRector;
 
-return static function (ContainerConfigurator $containerConfigurator): void {
-    $parameters = $containerConfigurator->parameters();
+return static function (RectorConfig $rectorConfig): void {
+    $rectorConfig->parallel();
 
-    $services = $containerConfigurator->services();
-    $services->set(TypedPropertyRector::class);
-    
-    $containerConfigurator->import(SetList::CODE_QUALITY);
-    $containerConfigurator->import(SetList::PHP_73);
-    $containerConfigurator->import(SetList::PHP_74);
-    $containerConfigurator->import(SetList::PHP_80);
+    $rectorConfig->paths([
+        __DIR__ . '/app',
+        __DIR__.'/config',
+        __DIR__.'/database',
+        __DIR__.'/tests'
+        __DIR__ . '/routes',
+    ]);
 
-    /*
-    $parameters->set(Option::SETS, [
-        SetList::ACTION_INJECTION_TO_CONSTRUCTOR_INJECTION,
-        //SetList::ARRAY_STR_FUNCTIONS_TO_STATIC_CALL,
+    $rectorConfig->skip([
+        IssetOnPropertyObjectToPropertyExistsRector::class,
+
+        __DIR__ . '/app/Http/Middleware/*',
+    ]);
+
+    $rectorConfig->rules([
+        ReturnTypeFromStrictBoolReturnExprRector::class,
+        //ReturnTypeFromStrictNativeFuncCallRector::class,
+        ReturnTypeFromStrictNewArrayRector::class,
+        ReturnTypeFromStrictScalarReturnExprRector::class,
+        ReturnTypeFromReturnNewRector::class,
+    ]);
+
+    $rectorConfig->sets([
         SetList::CODE_QUALITY,
-        //SetList::PHP_53,
-        //SetList::PHP_54,
-        //SetList::PHP_56,
-        //SetList::PHP_70,
-        //SetList::PHP_71,
-        //SetList::PHP_72,
-        SetList::PHP_73,
-        SetList::PHP_74,
-        //SetList::PHP_80,
-        SetList::PHPSTAN,
-        //SetList::PHPUNIT_CODE_QUALITY,
-        SetList::SOLID,
+        SetList::CODING_STYLE,
+        SetList::DEAD_CODE,
+        SetList::TYPE_DECLARATION,
+        SetList::EARLY_RETURN,
+        SetList::PHP_81,
+        LevelSetList::UP_TO_PHP_80,
     ]);
-    */
-    
-    /*
-    // is there single rule you don't like from a set you use?
-    $parameters->set(Option::EXCLUDE_RECTORS, [
-        SimplifyIfReturnBoolRector::class,
-    ]);
-    */
 
-    // paths to refactor;
-    $parameters->set(Option::PATHS, [__DIR__.'/app', __DIR__.'/tests']);
-    
-    // is there a file you need to skip?
-    $parameters->set(Option::EXCLUDE_PATHS, [
-        // single file
-        __DIR__ . '/src/ComplicatedFile.php',
-        // or directory
-        __DIR__ . '/src/ComplicatedFile.php',
-        // or fnmatch
-        __DIR__ . '/src/*/Tests/*',
+    $rectorConfig->sets([
+        LaravelSetList::LARAVEL_CODE_QUALITY,
+        LaravelSetList::LARAVEL_90,
+        LaravelLevelSetList::UP_TO_LARAVEL_80,
     ]);
-    
-    // auto import fully qualified class names? [default: false]
-    //$parameters->set(Option::AUTO_IMPORT_NAMES, true);
-
-    // skip root namespace classes, like \DateTime or \Exception [default: true]
-    //$parameters->set(Option::IMPORT_SHORT_CLASSES, false);
-    
-    // Run Rector only on changed files
-    //$parameters->set(Option::ENABLE_CACHE, true);
 };
 ```
 
@@ -151,7 +133,7 @@ Please visit [RectorPhp](https://github.com/rectorphp/rector#features) for more 
 
 ## Uninstall
 
-If you want to uninstall this library remove configuration files first: `rector.php` from your application.
+If you want to uninstall this extension remove configuration files first: `rector.php` from your application.
 
 then remove package:
 
