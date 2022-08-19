@@ -52,7 +52,8 @@
         "laravel/pint": "^1.1",
         "phpstan/extension-installer": "^1.1",
         "phpstan/phpstan-deprecation-rules": "^1.0",
-        "nunomaduro/larastan": "^2.1"
+        "nunomaduro/larastan": "^2.1",
+        "nunomaduro/collision": "^6.2"
     },
     "scripts": {
         "analyse": "vendor/bin/phpstan analyse",
