@@ -13,20 +13,3 @@ grumphp:
             max_subject_width: 120
             max_body_width: 160
             enforce_capitalized_subject: false
-        phpcs:
-            standard: "PSR12"
-            warning_severity: 0
-            tab_width: 4
-        phpcsfixer:
-            allow_risky: true
-            cache_file: ~
-            config: .php-cs-fixer.dist.php
-            using_cache: ~
-            config_contains_finder: true
-            verbose: true
-            diff: false
-            triggered_by: ['php']
-        rector:
-            no-progress-bar: false
-    extensions:
-        - palPalani\GrumPhpRectorTask\ExtensionLoader

@@ -11,7 +11,7 @@ use Symfony\Component\DependencyInjection\Reference;
 class ExtensionLoader implements ExtensionInterface
 {
     /**
-     * @param ContainerBuilder $container
+     * @param  ContainerBuilder  $container
      */
     public function load(ContainerBuilder $container): void
     {
