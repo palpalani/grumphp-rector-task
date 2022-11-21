@@ -18,7 +18,7 @@ final class RectorTask extends AbstractExternalTask
 {
     public static function getConfigurableOptions(): OptionsResolver
     {
-        $resolver = new OptionsResolver();
+        $resolver = new OptionsResolver;
         $resolver->setDefaults([
             'whitelist_patterns' => [],
             'clear-cache' => false,
