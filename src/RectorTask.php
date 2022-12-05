@@ -53,7 +53,10 @@ final class RectorTask extends AbstractExternalTask
     {
         $config = $this->getConfig()->getOptions();
 
-        $files = $context->getFiles()->extensions($config['triggered_by']);
+        $files = $context->getFiles()
+            ->notPaths($config['ignore_patterns'])
+            ->extensions($config['triggered_by']);
+        
         if (0 === \count($files)) {
             return TaskResult::createSkipped($this, $context);
         }
