@@ -4,6 +4,8 @@ This package extends [GrumPHP](https://github.com/phpro/grumphp)
 with a task that runs [RectorPHP](https://github.com/rectorphp/rector) for
 your Laravel projects or any PHP application.
 
+Note that we have added `--dry-run` option, so the source code never changed.
+
 ## Installation
 
 The easiest way to install this package is through composer:
@@ -28,6 +30,8 @@ grumphp:
             ignore_patterns: []
             no-progress-bar: false
             files_on_pre_commit: false
+            paths: []
+            no_diffs: false
     extensions:
         - palPalani\GrumPhpRectorTask\ExtensionLoader
 ````
@@ -70,6 +74,10 @@ Hide progress bar. Useful e.g. for nicer CI output.
 
 This option makes it possible to use the changed files as paths during pre-commits. It will use the paths option to make sure only committed files that match the path are validated.
 
+#### no_diff
+
+`Default: false`
+
 ### Sample RectorPhp configuration
 
 Create `rector.php` in your project root and configure as follows. This example file iam using for my [Laravel](https://laravel.com/) project, but you can use library with any [PHP](https://www.php.net/) project. Also you no need to set all these settings, Please add or remove as per your requirements.
@@ -91,9 +99,9 @@ return static function (RectorConfig $rectorConfig): void {
 
     $rectorConfig->paths([
         __DIR__ . '/app',
-        __DIR__.'/config',
-        __DIR__.'/database',
-        __DIR__.'/tests'
+        __DIR__ . '/config',
+        __DIR__ . '/database',
+        __DIR__ . '/tests'
         __DIR__ . '/routes',
     ]);
 
@@ -137,7 +145,7 @@ If you want to uninstall this extension remove configuration files first: `recto
 
 then remove package:
 
-    ``composer remove palpalani/grumphp-rector-task``
+    composer remove palpalani/grumphp-rector-task
 
 ## Changelog
 
