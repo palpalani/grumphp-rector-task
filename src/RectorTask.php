@@ -59,15 +59,15 @@ final class RectorTask extends AbstractExternalTask
         $arguments = $this->processBuilder->createArgumentsForCommand('rector');
         $arguments->add('process');
         $arguments->add('--dry-run');
-
+        $arguments->addOptionalArgument('--ansi', true);
+        $arguments->addOptionalArgument('--no-progress-bar', $config['clear-cache']);
+        
         foreach ($config['whitelist_patterns'] as $whitelistPattern) {
             $arguments->add($whitelistPattern);
         }
 
         $arguments->addOptionalArgument('--config=%s', $config['config']);
         $arguments->addOptionalArgument('--clear-cache', $config['clear-cache']);
-        $arguments->addOptionalArgument('--no-progress-bar', $config['clear-cache']);
-        $arguments->addOptionalArgument('--ansi', true);
         $this->addPaths($arguments, $context, $files, $config);
 
         $process = $this->processBuilder->buildProcess($arguments);
