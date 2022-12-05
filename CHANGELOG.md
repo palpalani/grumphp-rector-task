@@ -4,9 +4,10 @@ All notable changes to `laravel-login-notification` will be documented in this f
 
 ## 0.9.0 - 2022-12-05
 
-Updated `rectorphp` version.
-Fixed using exclude path option.
-Changed excuting order of the parameters.
+* Updated `rectorphp` version.
+* Fixed using exclude path option.
+* Changed excuting order of the parameters.
+* Added new `no_diff` parametr.
 
 ## 0.8.3 - 2021-11-16
 
