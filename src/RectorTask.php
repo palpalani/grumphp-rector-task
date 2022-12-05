@@ -20,7 +20,7 @@ final class RectorTask extends AbstractExternalTask
     {
         $resolver = new OptionsResolver;
         $resolver->setDefaults([
-            //'whitelist_patterns' => [],
+            'whitelist_patterns' => [],
             'clear-cache' => false,
             'config' => 'rector.php',
             'triggered_by' => ['php'],
@@ -31,7 +31,7 @@ final class RectorTask extends AbstractExternalTask
             'no_diffs' => false,
         ]);
 
-        //$resolver->addAllowedTypes('whitelist_patterns', ['array']);
+        $resolver->addAllowedTypes('whitelist_patterns', ['array']);
         $resolver->addAllowedTypes('clear-cache', ['bool']);
         $resolver->addAllowedTypes('config', ['null', 'string']);
         $resolver->addAllowedTypes('triggered_by', ['array']);
