@@ -28,6 +28,7 @@ final class RectorTask extends AbstractExternalTask
             'no-progress-bar' => false,
             'files_on_pre_commit' => false,
             'paths' => [],
+            'no_diffs' => false,
         ]);
 
         //$resolver->addAllowedTypes('whitelist_patterns', ['array']);
@@ -38,6 +39,7 @@ final class RectorTask extends AbstractExternalTask
         $resolver->addAllowedTypes('no-progress-bar', ['bool']);
         $resolver->addAllowedTypes('files_on_pre_commit', ['bool']);
         $resolver->addAllowedTypes('paths', ['array']);
+        $resolver->addAllowedTypes('no_diffs', ['bool']);
 
         return $resolver;
     }
@@ -68,6 +70,7 @@ final class RectorTask extends AbstractExternalTask
 
         $arguments->addOptionalArgument('--config=%s', $config['config']);
         $arguments->addOptionalArgument('--clear-cache', $config['clear-cache']);
+        $arguments->addOptionalArgument('--no-diffs', $config['no_diffs']);
         $this->addPaths($arguments, $context, $files, $config);
 
         $process = $this->processBuilder->buildProcess($arguments);
