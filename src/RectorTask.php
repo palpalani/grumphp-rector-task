@@ -56,7 +56,7 @@ final class RectorTask extends AbstractExternalTask
         $files = $context->getFiles()
             ->notPaths($config['ignore_patterns'])
             ->extensions($config['triggered_by']);
-        
+
         if (0 === \count($files)) {
             return TaskResult::createSkipped($this, $context);
         }
@@ -66,7 +66,7 @@ final class RectorTask extends AbstractExternalTask
         $arguments->add('--dry-run');
         $arguments->addOptionalArgument('--ansi', true);
         $arguments->addOptionalArgument('--no-progress-bar', $config['clear-cache']);
-        
+
         foreach ($config['whitelist_patterns'] as $whitelistPattern) {
             $arguments->add($whitelistPattern);
         }
